@@ -198,6 +198,7 @@ public class AddTransactionFragment extends BottomSheetDialogFragment {
 
                 ((MainActivity)getActivity()).viewModel.addTransaction(transaction);
                 ((MainActivity)getActivity()).getTransaction();
+
                 dismiss();
 
             }
