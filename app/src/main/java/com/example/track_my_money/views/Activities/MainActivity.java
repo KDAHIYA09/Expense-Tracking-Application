@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Showing Monthly Transactions Data", Toast.LENGTH_SHORT).show();
                     updateDate();
                 } else if (tab.getText().equals("Daily")){
-                    Toast.makeText(MainActivity.this, "Showing Daily Transactions Data", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Showing Daily Transactions", Toast.LENGTH_SHORT).show();
                     Constants.SELECTED_TAB = 0;
                     updateDate();
                 }
