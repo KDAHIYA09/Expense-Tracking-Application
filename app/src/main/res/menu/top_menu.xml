@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/ic_baseline_search_24"
+        android:title="Search"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/favourite"
+        android:icon="@drawable/ic_baseline_star_outline_24"
+        android:title="Favourites"
+        app:showAsAction="always" />
+</menu>
+
+<!--showAsAction = always is used to always show menu item icons on toolbar instead of 3 dots icon which cntains name of menu item only/.-->
