@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".views.Activities.MainActivity">
 
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
@@ -47,6 +48,8 @@
 
     </com.google.android.material.tabs.TabLayout>
 
+
+
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -59,6 +62,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:menu="@menu/top_menu"
         app:navigationIconTint="@color/white"
+
         app:title="Transactions" />
 
     <LinearLayout

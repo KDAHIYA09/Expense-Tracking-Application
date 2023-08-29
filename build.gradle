@@ -1,18 +1,22 @@
 
 
 buildscript {
+    ext {
+        agp_version = '8.0.0'
+    }
     repositories {
         mavenCentral()
     }
     dependencies {
-        classpath "io.realm:realm-gradle-plugin:10.11.1"
+
+        classpath "io.realm:realm-gradle-plugin:10.15.1"
     }
 }
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 plugins {
-    id 'com.android.application' version '7.3.0' apply false
+    id 'com.android.application' version '8.0.0' apply false
     id 'com.android.library' version '7.3.0' apply false
 }
 
