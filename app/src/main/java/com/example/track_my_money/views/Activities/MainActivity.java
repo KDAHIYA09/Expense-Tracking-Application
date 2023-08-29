@@ -1,7 +1,10 @@
 package com.example.track_my_money.views.Activities;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -20,6 +24,7 @@ import com.example.track_my_money.ViewModel.MainViewModel;
 import com.example.track_my_money.views.Fragments.AddTransactionFragment;
 import com.example.track_my_money.R;
 import com.example.track_my_money.databinding.ActivityMainBinding;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
 import java.text.SimpleDateFormat;
@@ -30,7 +35,7 @@ import java.util.Date;
 import io.realm.Realm;
 import io.realm.RealmResults;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     ActivityMainBinding binding;  // to directly access any id without using find view by id
     Calendar calendar;
@@ -47,7 +52,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
+
+
+       binding.navView.bringToFront();
+       // setSupportActionBar(binding.toolbar);
+        ActionBarDrawerToggle toggle= new ActionBarDrawerToggle(this,binding.drawerLayout,binding.toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        binding.drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        binding.navView.setNavigationItemSelectedListener(this);
 
         // YHA P hmne mainviewmodel wali class ko initialize kra liya
         viewModel = new ViewModelProvider(this).get(MainViewModel.class);
@@ -226,5 +240,27 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.top_menu,menu); // to set menu on toolbar
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)){
+            binding.drawerLayout.closeDrawer(GravityCompat.START);
+        }else {
+            super.onBackPressed();
+        }
+
+    }
+
+
+    // set karta hai Navigation item me
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+
+
+        // menu ki coding isme hoge
+
+        return true;
     }
 }
