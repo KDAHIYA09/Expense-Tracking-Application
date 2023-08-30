@@ -130,6 +130,7 @@
                 android:layout_margin="10dp"
                 android:padding="2dp"
                 android:text="Save Transaction"
+                android:backgroundTint="@color/active"
                 app:cornerRadius="10dp" />
         </LinearLayout>
     </ScrollView>

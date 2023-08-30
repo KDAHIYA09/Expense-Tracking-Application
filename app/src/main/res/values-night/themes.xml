@@ -2,15 +2,23 @@
     <!-- Base application theme. -->
     <style name="Theme.Track_My_Money" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/orange</item>
-        <item name="colorPrimaryVariant">@color/orange</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimary">@color/active</item>
+        <item name="colorPrimaryVariant">@color/active</item>
+        <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/orange</item>
-        <item name="colorSecondaryVariant">@color/orange</item>
+        <item name="colorSecondary">@color/active</item>
+        <item name="colorSecondaryVariant">@color/active</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+        <style name="App.CustomIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+            <item name="android:color">@color/inactivedark</item>
+        </style>
+
+        <color name="orangedark">#9C3612</color>
+        <color name="inactivedark">#4DDBE4</color>
+
 </resources>

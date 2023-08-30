@@ -61,6 +61,7 @@ public class AddTransactionFragment extends BottomSheetDialogFragment {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
+
                 binding.incomeBtn.setBackground(getContext().getDrawable(R.drawable.income_selector));
                 binding.expenseBtn.setBackground(getContext().getDrawable(R.drawable.dafault_selector));
                 binding.incomeBtn.setTextColor(getContext().getColor(R.color.greenColor));

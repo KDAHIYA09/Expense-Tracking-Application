@@ -4,4 +4,18 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close"> Close navigation drawer</string>
+
+
+    //Headings
+    <string name="heading_one">Simplify Expense Tracking On-the-Go</string>
+    <string name="heading_two">Smart Budgeting, Powered by AI"</string>
+    <string name="heading_three">Receipts, Organized Digitally</string>
+    <string name="heading_fourth">Seamless Collaborative Finance</string>
+
+    //Description
+    <string name="desc_one">Effortlessly monitor and categorize expenses with our user-friendly app, gaining insights into your spending patterns.</string>
+    <string name="desc_two">Achieve financial goals faster with AI-driven analysis, personalized budget suggestions, and actionable insights.</string>
+    <string name="desc_three">Capture and attach receipts to expenses, keeping your financial records organized and readily accessible.</string>
+    <string name="desc_fourth">Easily manage shared finances, whether with roommates or colleagues, while syncing accounts across devices for a clear overview.</string>
+
 </resources>

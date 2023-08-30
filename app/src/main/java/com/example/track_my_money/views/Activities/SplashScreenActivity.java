@@ -10,11 +10,12 @@ import android.view.animation.AnimationUtils;
 
 import com.example.track_my_money.R;
 import com.example.track_my_money.databinding.ActivitySplashScreenBinding;
+import com.example.track_my_money.views.Activities.SignScreen.SliderScreenActivity;
 
 public class SplashScreenActivity extends AppCompatActivity {
     // animation variable
 
-    private static  int SPLASH_SCREEN=5000;
+    private static  int SPLASH_SCREEN=4000;
     Animation topAnim , bottomAnim;
     ActivitySplashScreenBinding binding;
 
@@ -36,7 +37,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashScreenActivity.this ,MainActivity.class );
+                Intent intent = new Intent(SplashScreenActivity.this , SliderScreenActivity.class );
               startActivity(intent);
               finish();
             }

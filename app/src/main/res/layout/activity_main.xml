@@ -30,7 +30,7 @@
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/orange"
+        android:background="@color/active"
         android:contentDescription="@string/app_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,7 +73,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/orange"
+        android:background="@color/active"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -81,7 +81,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:menu="@menu/top_menu"
          app:titleTextColor="@color/white"
-
+        app:navigationIconTint="@color/white"
         app:navigationIcon="@drawable/baseline_view_headline_24"
 
         app:title="Transactions" />
@@ -90,7 +90,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/orange"
+        android:background="@color/active"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="15dp"
@@ -226,7 +226,7 @@
         android:id="@+id/navigationBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/orange"
+        android:background="@color/active"
         android:padding="3dp"
         app:itemActiveIndicatorStyle="@style/App.CustomIndicator"
         app:itemIconTint="@color/white"
@@ -248,6 +248,7 @@
         android:src="@drawable/ic_baseline_add_24"
         app:layout_constraintBottom_toTopOf="@id/navigationBar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:backgroundTint="@color/active"
         app:tint="@color/white"
         tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
