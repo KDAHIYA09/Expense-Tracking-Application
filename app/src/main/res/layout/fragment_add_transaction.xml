@@ -27,6 +27,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
+                    android:textColor="@color/black"
                     android:background="@drawable/dafault_selector"
                     android:gravity="center"
                     android:padding="12dp"
@@ -36,6 +37,8 @@
 
                 <TextView
                     android:id="@+id/expenseBtn"
+                    android:textColor="@color/black"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
@@ -52,6 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
+                android:background="@color/white"
                 android:focusable="false"
                 android:padding="2dp">
 
@@ -60,6 +64,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:focusable="false"
+                    android:textColor="@color/active"
+                    android:textColorHint="@color/active"
                     android:hint="Select Date" />
                 <!--                    ye to hota h agar mjhe ispe date picker kholna h to typ krwana bnd krne k liye-->
 
@@ -71,6 +77,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:focusable="false"
+                android:background="@color/white"
                 android:padding="2dp">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -78,6 +85,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Amount"
+                    android:textColor="@color/active"
+                    android:textColorHint="@color/active"
+
                     android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -85,6 +95,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
+                android:background="@color/white"
                 android:focusable="false"
                 android:padding="2dp">
 
@@ -93,6 +104,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:focusable="false"
+                    android:textColor="@color/active"
+                    android:textColorHint="@color/active"
                     android:hint="Categary" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -100,6 +113,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
+                android:background="@color/white"
                 android:padding="2dp">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -107,6 +121,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:focusable="false"
+                    android:textColor="@color/active"
+                    android:textColorHint="@color/active"
                     android:hint="Account" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -114,12 +130,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
+                android:background="@color/white"
                 android:padding="2dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/note"
+                   android:textColorHint="@color/active"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/active"
                     android:hint="Note" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -129,6 +148,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:padding="2dp"
+                android:textColor="@color/black"
                 android:text="Save Transaction"
                 android:backgroundTint="@color/active"
                 app:cornerRadius="10dp" />

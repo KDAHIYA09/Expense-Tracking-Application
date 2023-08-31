@@ -22,9 +22,10 @@
         android:layout_marginRight="10dp"
         android:fontFamily="@font/baloo"
         android:gravity="center"
+
         android:text="@string/heading_one"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/active"
         android:textSize="23dp"
         android:textStyle="bold" />
 
@@ -38,7 +39,7 @@
         android:textStyle="bold|italic"
         android:text="@string/desc_one"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/active"
         android:textSize="16dp" />
 
 
