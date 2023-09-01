@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.track_my_money.R;
 
@@ -82,6 +83,12 @@ public class ViewPagerAdapter extends PagerAdapter {
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
 
         container.removeView((LinearLayout) object);
+
+    }
+
+    @Override
+    public void destroyItem(@NonNull View container, int position, @NonNull Object object) {
+        ((ViewPager) container).removeView((ImageView) object);
 
     }
 }
