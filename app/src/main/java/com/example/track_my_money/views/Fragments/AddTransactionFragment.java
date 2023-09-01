@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +27,7 @@ import com.example.track_my_money.databinding.FragmentAddTransactionBinding;
 import com.example.track_my_money.databinding.ListDialogBinding;
 import com.example.track_my_money.views.Activities.MainActivity;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
-import com.shashank.sony.fancytoastlib.FancyToast;
+
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
