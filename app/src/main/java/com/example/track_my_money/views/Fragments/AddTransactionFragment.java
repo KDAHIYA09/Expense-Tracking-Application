@@ -4,10 +4,12 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -26,6 +28,7 @@ import com.example.track_my_money.databinding.FragmentAddTransactionBinding;
 import com.example.track_my_money.databinding.ListDialogBinding;
 import com.example.track_my_money.views.Activities.MainActivity;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.shashank.sony.fancytoastlib.FancyToast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -75,6 +78,7 @@ public class AddTransactionFragment extends BottomSheetDialogFragment {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
+
                 binding.expenseBtn.setBackground(getContext().getDrawable(R.drawable.expense_selector));
                 binding.incomeBtn.setBackground(getContext().getDrawable(R.drawable.dafault_selector));
                 binding.expenseBtn.setTextColor(getContext().getColor(R.color.redColor));
@@ -187,6 +191,24 @@ public class AddTransactionFragment extends BottomSheetDialogFragment {
         binding.saveTransactionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (binding.date.getText().toString().isEmpty()){
+                    binding.date.setError("Date not Specified ");
+                    return;
+                }
+                if (binding.amount.getText().toString().isEmpty()){
+                    binding.amount.setError("Amount not added yet");
+                    return;
+                }
+                if (binding.catogary.getText().toString().isEmpty()){
+                    binding.catogary.setError(" Category not specified");
+                    return;
+                }
+                if (binding.account.getText().toString().isEmpty()){
+                    binding.account.setError("Enter your Account");
+                    return;
+                }if (binding.note.getText().toString().isEmpty()){
+                    binding.note.setError("Enter your Note regarding transaction  ");
+                }
                 double amount = Double.parseDouble(binding.amount.getText().toString());
                 String note = binding.note.getText().toString();
 
@@ -199,7 +221,8 @@ public class AddTransactionFragment extends BottomSheetDialogFragment {
 
                 ((MainActivity)getActivity()).viewModel.addTransaction(transaction);
                 ((MainActivity)getActivity()).getTransaction();
-
+                Toast.makeText(getContext(), "Transaction saved successfully", Toast.LENGTH_SHORT).show();
+                //FancyToast.makeText(getContext(),"Transaction saved successfully!",FancyToast.LENGTH_LONG,FancyToast.SUCCESS,true);
                 dismiss();
 
             }
