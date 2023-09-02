@@ -5,10 +5,14 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,14 +20,24 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.track_my_money.AccountsFragment;
 import com.example.track_my_money.Adapters.TransactionsAdapter;
+import com.example.track_my_money.HomeFragment;
 import com.example.track_my_money.Models.Transaction;
+import com.example.track_my_money.MoreFragment;
+import com.example.track_my_money.PrivacyPolicyFragment;
+import com.example.track_my_money.ProfileFragment;
+import com.example.track_my_money.RateUsFragment;
+import com.example.track_my_money.ShareUsFragment;
+import com.example.track_my_money.StatsFragment;
+import com.example.track_my_money.TransactionHistoryFragment;
 import com.example.track_my_money.Utils.Constants;
 import com.example.track_my_money.Utils.Helper;
 import com.example.track_my_money.ViewModel.MainViewModel;
 import com.example.track_my_money.views.Fragments.AddTransactionFragment;
 import com.example.track_my_money.R;
 import com.example.track_my_money.databinding.ActivityMainBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
@@ -39,10 +53,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     ActivityMainBinding binding;  // to directly access any id without using find view by id
     Calendar calendar;
+    Menu botom_nav_menu, drawer_menu;
 //    Realm realm;  // making an instance of database //ye view model mclass m shift krdiya
 
-    int selectedTab = 0;  // this is to use all fragments
-    // 0 = daily fragment; 1=monthly; 2=calander; 3 = summary; 4 = notes
+//    int selectedTab = 0;  // this is to use all fragments
+//    // 0 = daily fragment; 1=monthly; 2=calander; 3 = summary; 4 = notes
+    // main activity m fragment apply krne k liye is cod ko home fragment m leke chale gye
 
     public MainViewModel viewModel;
 
@@ -53,6 +69,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         //getSupportActionBar().hide();
+        replaceFragment(new HomeFragment());
+        //to show home fragment whenever app opens
+        binding.navView.setCheckedItem(R.id.nav_home);
 
 
        binding.navView.bringToFront();
@@ -72,65 +91,192 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // ye sara kaam hm view model class m krege
 
         calendar = Calendar.getInstance();
-        updateDate(); //function to set current date in textview
+        //updateDate(); //function to set current date in textview
 
-        binding.nextDateBtn.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
+        botom_nav_menu = binding.navigationBar.getMenu();
+        MenuItem menuItem1 = botom_nav_menu.findItem(R.id.bottom_home);
+        MenuItem menuItem2 = botom_nav_menu.findItem(R.id.bottom_stats);
+        MenuItem menuItem3 = botom_nav_menu.findItem(R.id.bottom_account);
+        MenuItem menuItem4 = botom_nav_menu.findItem(R.id.bottom_more);
+
+        menuItem1.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
-            public void onClick(View v) {
-                if (Constants.SELECTED_TAB == Constants.DAILY){
-                    calendar.add(Calendar.DATE, 1);
-                }else if (Constants.SELECTED_TAB == Constants.MONTHLY){
-                    calendar.add(Calendar.MONTH, 1);
-                }
-                updateDate();
+            public boolean onMenuItemClick(@NonNull MenuItem item) {
+                replaceFragment(new HomeFragment());
+                menuItem1.setChecked(true);
+                return true;
+            }
+        });
+        menuItem2.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(@NonNull MenuItem item) {
+                replaceFragment(new StatsFragment());
+                menuItem2.setChecked(true);
+                return true;
+            }
+        });
+        menuItem3.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(@NonNull MenuItem item) {
+                menuItem3.setChecked(true);
+                replaceFragment(new AccountsFragment());
+                return true;
+            }
+        });
+        menuItem4.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(@NonNull MenuItem item) {
+                menuItem4.setChecked(true);
+                replaceFragment(new MoreFragment());
+                return true;
             }
         });
 
-        binding.previousDateBtn.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
+
+        // drawer layout menu konclick listner
+        drawer_menu = binding.navView.getMenu();
+        MenuItem profile = drawer_menu.findItem(R.id.nav_profile);
+        MenuItem home = drawer_menu.findItem(R.id.nav_home);
+        MenuItem history = drawer_menu.findItem(R.id.nav_history);
+        MenuItem rateUs = drawer_menu.findItem(R.id.nav_rate_us);
+        MenuItem ShareUs = drawer_menu.findItem(R.id.nav_share_us);
+        MenuItem privacyPolicy = drawer_menu.findItem(R.id.nav_privacy_policy);
+        MenuItem LogOut = drawer_menu.findItem(R.id.nav_log_out);
+
+        profile.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
-            public void onClick(View v) {
-                if (Constants.SELECTED_TAB == Constants.DAILY){
-                    calendar.add(Calendar.DATE, -1);
-                }else if(Constants.SELECTED_TAB == Constants.MONTHLY) {
-                    calendar.add(Calendar.MONTH, -1);
-                }
-                updateDate();
+            public boolean onMenuItemClick(@NonNull MenuItem item) {
+                replaceFragment(new ProfileFragment());
+                profile.setChecked(true);
+                binding.drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            }
+        });
+        history.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public boolean onMenuItemClick(@NonNull MenuItem item) {
+                replaceFragment(new TransactionHistoryFragment());
+                history.setChecked(true);
+                binding.drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            }
+        });
+        home.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public boolean onMenuItemClick(@NonNull MenuItem item) {
+                replaceFragment(new HomeFragment());
+                home.setChecked(true);
+                binding.drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            }
+        });
+        ShareUs.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public boolean onMenuItemClick(@NonNull MenuItem item) {
+                replaceFragment(new ShareUsFragment());
+                ShareUs.setChecked(true);
+                binding.drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            }
+        });
+        rateUs.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public boolean onMenuItemClick(@NonNull MenuItem item) {
+                replaceFragment(new RateUsFragment());
+                rateUs.setChecked(true);
+                binding.drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            }
+        });
+        privacyPolicy.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public boolean onMenuItemClick(@NonNull MenuItem item) {
+                replaceFragment(new PrivacyPolicyFragment());
+                privacyPolicy.setChecked(true);
+                binding.drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            }
+        });
+        LogOut.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public boolean onMenuItemClick(@NonNull MenuItem item) {
+                //replaceFragment(new ProfileFragment());
+                Toast.makeText(MainActivity.this, "Logout clicked", Toast.LENGTH_SHORT).show();
+                LogOut.setChecked(true);
+                binding.drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
             }
         });
 
 
-        binding.floatingActionBtn.setOnClickListener(c-> {
-            new AddTransactionFragment().show(getSupportFragmentManager(), null);
-        });
 
-        // to apply on clicklistenr on tab item
-        binding.tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                if (tab.getText().equals("Monthly")){
-                    Constants.SELECTED_TAB = 1;
-                    Toast.makeText(MainActivity.this, "Showing Monthly Transactions Data", Toast.LENGTH_SHORT).show();
-                    updateDate();
-                } else if (tab.getText().equals("Daily")){
-                    Toast.makeText(MainActivity.this, "Showing Daily Transactions", Toast.LENGTH_SHORT).show();
-                    Constants.SELECTED_TAB = 0;
-                    updateDate();
-                }
-            }
-// yha p hm monthly tab m jaye to month wise transaction aaye ye try krrhe h
 
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
+// main activity m fragment apply krne k liye is cod ko home fragment m leke chale gye yha se------>>>>>> 1...
+//        binding.nextDateBtn.setOnClickListener(new View.OnClickListener() {
+//            @RequiresApi(api = Build.VERSION_CODES.N)
+//            @Override
+//            public void onClick(View v) {
+//                if (Constants.SELECTED_TAB == Constants.DAILY){
+//                    calendar.add(Calendar.DATE, 1);
+//                }else if (Constants.SELECTED_TAB == Constants.MONTHLY){
+//                    calendar.add(Calendar.MONTH, 1);
+//                }
+//                updateDate();
+//            }
+//        });
 
-            }
+//        binding.previousDateBtn.setOnClickListener(new View.OnClickListener() {
+//            @RequiresApi(api = Build.VERSION_CODES.N)
+//            @Override
+//            public void onClick(View v) {
+//                if (Constants.SELECTED_TAB == Constants.DAILY){
+//                    calendar.add(Calendar.DATE, -1);
+//                }else if(Constants.SELECTED_TAB == Constants.MONTHLY) {
+//                    calendar.add(Calendar.MONTH, -1);
+//                }
+//                updateDate();
+//            }
+//        });
 
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
+//
+//        binding.floatingActionBtn.setOnClickListener(c-> {
+//            new AddTransactionFragment().show(getSupportFragmentManager(), null);
+//        });
 
-            }
-        });
+//        // to apply on clicklistenr on tab item
+//        binding.tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+//            @Override
+//            public void onTabSelected(TabLayout.Tab tab) {
+//                if (tab.getText().equals("Monthly")){
+//                    Constants.SELECTED_TAB = 1;
+//                    Toast.makeText(MainActivity.this, "Showing Monthly Transactions Data", Toast.LENGTH_SHORT).show();
+//                    updateDate();
+//                } else if (tab.getText().equals("Daily")){
+//                    Toast.makeText(MainActivity.this, "Showing Daily Transactions", Toast.LENGTH_SHORT).show();
+//                    Constants.SELECTED_TAB = 0;
+//                    updateDate();
+//                }
+//            }
+//// yha p hm monthly tab m jaye to month wise transaction aaye ye try krrhe h
+//
+//            @Override
+//            public void onTabUnselected(TabLayout.Tab tab) {
+//
+//            }
+//
+//            @Override
+//            public void onTabReselected(TabLayout.Tab tab) {
+//
+//            }
+//        });   ------>>>>>> yha tk code home fragment m shift krdiya 1....
 
 
        // ArrayList<Transaction> transactions = new ArrayList<>();
@@ -155,45 +301,47 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //        RealmResults<Transaction> transactions = realm.where(Transaction.class).findAll();
 
 
+
+// main activity m fragment apply krne k liye is cod ko home fragment m leke chale gye ----->>>>>>>> yha se 2...
         // is function m hm data ko observe krte h aur koi bhi change hone p ye hme show krdega
-
-        binding.transactionsList.setLayoutManager(new LinearLayoutManager(this));
-
-        viewModel.transactions.observe(this, new Observer<RealmResults<Transaction>>() {
-            @Override
-            public void onChanged(RealmResults<Transaction> transactions) {
-                TransactionsAdapter transactionsAdapter = new TransactionsAdapter(MainActivity.this, transactions);
-                binding.transactionsList.setAdapter(transactionsAdapter);
-               if (transactions.size() > 0){
-                   binding.emptyState.setVisibility(View.GONE);
-               }else{
-                   binding.emptyState.setVisibility(View.VISIBLE);
-               }
-            }
-        });
-
-        viewModel.totalAmount.observe(this, new Observer<Double>() {
-            @Override
-            public void onChanged(Double aDouble) {
-                binding.totalAmountLbl.setText(String.valueOf(aDouble));
-            }
-        });
-
-        viewModel.totalIncome.observe(this, new Observer<Double>() {
-            @Override
-            public void onChanged(Double aDouble) {
-                binding.incomeLbl.setText(String.valueOf(aDouble));
-            }
-        });
-
-        viewModel.totalExpense.observe(this, new Observer<Double>() {
-            @Override
-            public void onChanged(Double aDouble) {
-                binding.expenseLbl.setText(String.valueOf(aDouble));
-            }
-        });          // ab income aur expense k vaale set krne k bad next step h fragment se data add krwana
-
-        viewModel.getTransaction(calendar);
+//
+//        binding.transactionsList.setLayoutManager(new LinearLayoutManager(this));
+//
+//        viewModel.transactions.observe(this, new Observer<RealmResults<Transaction>>() {
+//            @Override
+//            public void onChanged(RealmResults<Transaction> transactions) {
+//                TransactionsAdapter transactionsAdapter = new TransactionsAdapter(MainActivity.this, transactions);
+//                binding.transactionsList.setAdapter(transactionsAdapter);
+//               if (transactions.size() > 0){
+//                   binding.emptyState.setVisibility(View.GONE);
+//               }else{
+//                   binding.emptyState.setVisibility(View.VISIBLE);
+//               }
+//            }
+//        });
+//
+//        viewModel.totalAmount.observe(this, new Observer<Double>() {
+//            @Override
+//            public void onChanged(Double aDouble) {
+//                binding.totalAmountLbl.setText(String.valueOf(aDouble));
+//            }
+//        });
+//
+//        viewModel.totalIncome.observe(this, new Observer<Double>() {
+//            @Override
+//            public void onChanged(Double aDouble) {
+//                binding.incomeLbl.setText(String.valueOf(aDouble));
+//            }
+//        });
+//
+//        viewModel.totalExpense.observe(this, new Observer<Double>() {
+//            @Override
+//            public void onChanged(Double aDouble) {
+//                binding.expenseLbl.setText(String.valueOf(aDouble));
+//            }
+//        });          // ab income aur expense k vaale set krne k bad next step h fragment se data add krwana
+//
+//        viewModel.getTransaction(calendar);  --------->>>>>> yha tk 2...
 
 //        TransactionsAdapter transactionsAdapter = new TransactionsAdapter(this, transactions);
 //        binding.transactionsList.setLayoutManager(new LinearLayoutManager(this));
@@ -206,40 +354,41 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //        realm = Realm.getDefaultInstance();
 //    }   //method to set database for user
 
-
+// main activity m fragment apply krne k liye is cod ko home fragment m leke chale gye ----->>>> 3.....
     // data live show krwane k liye hm 1 function bnate h yha
     public void getTransaction(){
         viewModel.getTransaction(calendar);
     }
 
 
-   // @RequiresApi(api = Build.VERSION_CODES.N)
-    void updateDate() {
-//        SimpleDateFormat dateFormat = null;
-//        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-//            dateFormat = new SimpleDateFormat("dd MMMM,YYYY");
+//   // @RequiresApi(api = Build.VERSION_CODES.N)
+//    void updateDate() {
+////        SimpleDateFormat dateFormat = null;
+////        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+////            dateFormat = new SimpleDateFormat("dd MMMM,YYYY");
+////        }
+//
+//        // according to selected tab hm method r krege
+//        if (Constants.SELECTED_TAB == Constants.DAILY){
+//            binding.currentDate.setText(Helper.formatdate(calendar.getTime()));
+//        } else if (Constants.SELECTED_TAB == Constants.MONTHLY){
+//            binding.currentDate.setText(Helper.formatdateByMonth(calendar.getTime()));
 //        }
-
-        // according to selected tab hm method r krege
-        if (Constants.SELECTED_TAB == Constants.DAILY){
-            binding.currentDate.setText(Helper.formatdate(calendar.getTime()));
-        } else if (Constants.SELECTED_TAB == Constants.MONTHLY){
-            binding.currentDate.setText(Helper.formatdateByMonth(calendar.getTime()));
-        }
-
-       // binding.currentDate.setText(Helper.formatdate(calendar.getTime()));
-        //method for getting current date
-        viewModel.getTransaction(calendar);
-    }
-
-// action bar ya toolbar m agar icon set krne h to menu lagana padta h
-// optionsItemMenu
+//
+//       // binding.currentDate.setText(Helper.formatdate(calendar.getTime()));
+//        //method for getting current date
+//        viewModel.getTransaction(calendar);
+//    } ----->>>> yhatk3....
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.top_menu,menu); // to set menu on toolbar
-        return super.onCreateOptionsMenu(menu);
+    public void replaceFragment(Fragment fragment){
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayout, fragment);
+        fragmentTransaction.commit();
+
+
     }
 
     @Override
@@ -252,15 +401,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
     // set karta hai Navigation item me
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-
-
         // menu ki coding isme hoge
-
         return true;
     }
 }
