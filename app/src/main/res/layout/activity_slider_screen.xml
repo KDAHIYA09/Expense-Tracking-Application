@@ -5,11 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".MainActivity">
+    tools:context=".views.Activities.SignScreen.SliderScreenActivity">
 
     <Button
         android:id="@+id/skipButton"
         android:layout_width="wrap_content"
+        android:transitionName="transition_login"
         android:layout_height="wrap_content"
         android:background="#00000000"
         android:text="Skip"
@@ -60,6 +61,7 @@
         android:layout_height="wrap_content"
         android:background="#00000000"
         android:textColor="@color/white"
+        android:transitionName="transition_login"
         android:text="Next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/ellipse2" />
