@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "756850427438",
+    "project_id": "smartbudget-4cdfb",
+    "storage_bucket": "smartbudget-4cdfb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:756850427438:android:cd3aa8e2daa58b025301bf",
+        "android_client_info": {
+          "package_name": "com.example.track_my_money"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "756850427438-q6rtk2c2ei6s4ap6lj0mk8sla2j7kvqt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcPCFcMUWCU8eMGwUo5c2ccpNSGXrYTDQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "756850427438-q6rtk2c2ei6s4ap6lj0mk8sla2j7kvqt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -65,32 +65,31 @@ public class HomeFragment extends Fragment {
         updateDate(); //function to set current date in textview
 
 
+//        binding.nextDateBtn.setOnClickListener(new View.OnClickListener() {
+//            @RequiresApi(api = Build.VERSION_CODES.N)
+//            @Override
+//            public void onClick(View v) {
+//                if (Constants.SELECTED_TAB == Constants.DAILY){
+//                    calendar.add(Calendar.DATE, 1);
+//                }else if (Constants.SELECTED_TAB == Constants.MONTHLY){
+//                    calendar.add(Calendar.MONTH, 1);
+//                }
+//                updateDate();
+//            }
+//        });
 
-        binding.nextDateBtn.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
-            @Override
-            public void onClick(View v) {
-                if (Constants.SELECTED_TAB == Constants.DAILY){
-                    calendar.add(Calendar.DATE, 1);
-                }else if (Constants.SELECTED_TAB == Constants.MONTHLY){
-                    calendar.add(Calendar.MONTH, 1);
-                }
-                updateDate();
-            }
-        });
-
-        binding.previousDateBtn.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
-            @Override
-            public void onClick(View v) {
-                if (Constants.SELECTED_TAB == Constants.DAILY){
-                    calendar.add(Calendar.DATE, -1);
-                }else if(Constants.SELECTED_TAB == Constants.MONTHLY) {
-                    calendar.add(Calendar.MONTH, -1);
-                }
-                updateDate();
-            }
-        });
+//        binding.previousDateBtn.setOnClickListener(new View.OnClickListener() {
+//            @RequiresApi(api = Build.VERSION_CODES.N)
+//            @Override
+//            public void onClick(View v) {
+//                if (Constants.SELECTED_TAB == Constants.DAILY){
+//                    calendar.add(Calendar.DATE, -1);
+//                }else if(Constants.SELECTED_TAB == Constants.MONTHLY) {
+//                    calendar.add(Calendar.MONTH, -1);
+//                }
+//                updateDate();
+//            }
+//        });
 
 
         binding.floatingActionBtn.setOnClickListener(c-> {
@@ -98,32 +97,32 @@ public class HomeFragment extends Fragment {
         });
 
         // to apply on clicklistenr on tab item
-        binding.tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                if (tab.getText().equals("Monthly")){
-                    Constants.SELECTED_TAB = 1;
-                    Toast.makeText(getActivity(), "Showing Monthly Transactions Data", Toast.LENGTH_SHORT).show();
-                    updateDate();
-                } else if (tab.getText().equals("Daily")){
-                    Toast.makeText(getActivity(), "Showing Daily Transactions", Toast.LENGTH_SHORT).show();
-                    Constants.SELECTED_TAB = 0;
-                    updateDate();
-                }
-            }
-// yha p hm monthly tab m jaye to month wise transaction aaye ye try krrhe h
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
-
+//        binding.tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+//            @Override
+//            public void onTabSelected(TabLayout.Tab tab) {
+//                if (tab.getText().equals("Monthly")){
+//                    Constants.SELECTED_TAB = 1;
+//                    Toast.makeText(getActivity(), "Showing Monthly Transactions Data", Toast.LENGTH_SHORT).show();
+//                    updateDate();
+//                } else if (tab.getText().equals("Daily")){
+//                    Toast.makeText(getActivity(), "Showing Daily Transactions", Toast.LENGTH_SHORT).show();
+//                    Constants.SELECTED_TAB = 0;
+//                    updateDate();
+//                }
+//            }
+//// yha p hm monthly tab m jaye to month wise transaction aaye ye try krrhe h
+//
+//            @Override
+//            public void onTabUnselected(TabLayout.Tab tab) {
+//
+//            }
+//
+//            @Override
+//            public void onTabReselected(TabLayout.Tab tab) {
+//
+//            }
+//        });
+//
 
 
         // is function m hm data ko observe krte h aur koi bhi change hone p ye hme show krdega

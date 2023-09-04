@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public boolean onMenuItemClick(@NonNull MenuItem item) {
                 replaceFragment(new HomeFragment());
                 menuItem1.setChecked(true);
+                binding.toolbar.setTitle("Transactions");
                 return true;
             }
         });
@@ -113,6 +114,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public boolean onMenuItemClick(@NonNull MenuItem item) {
                 replaceFragment(new StatsFragment());
                 menuItem2.setChecked(true);
+                binding.toolbar.setTitle("Statistics");
                 return true;
             }
         });
@@ -121,6 +123,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public boolean onMenuItemClick(@NonNull MenuItem item) {
                 menuItem3.setChecked(true);
                 replaceFragment(new AccountsFragment());
+                binding.toolbar.setTitle("Accounts");
                 return true;
             }
         });
@@ -129,6 +132,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public boolean onMenuItemClick(@NonNull MenuItem item) {
                 menuItem4.setChecked(true);
                 replaceFragment(new MoreFragment());
+                binding.toolbar.setTitle("More Actions");
                 return true;
             }
         });
@@ -151,6 +155,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 replaceFragment(new ProfileFragment());
                 profile.setChecked(true);
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
+                binding.toolbar.setTitle("Your Profile");
                 return true;
             }
         });
@@ -161,6 +166,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 replaceFragment(new TransactionHistoryFragment());
                 history.setChecked(true);
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
+                binding.toolbar.setTitle("Transaction History");
                 return true;
             }
         });
@@ -171,6 +177,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 replaceFragment(new HomeFragment());
                 home.setChecked(true);
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
+                binding.toolbar.setTitle("Transactions");
                 return true;
             }
         });
@@ -181,6 +188,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 replaceFragment(new ShareUsFragment());
                 ShareUs.setChecked(true);
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
+                binding.toolbar.setTitle("Transactions");
                 return true;
             }
         });
@@ -191,6 +199,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 replaceFragment(new RateUsFragment());
                 rateUs.setChecked(true);
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
+                binding.toolbar.setTitle("Transactions");
                 return true;
             }
         });
@@ -201,6 +210,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 replaceFragment(new PrivacyPolicyFragment());
                 privacyPolicy.setChecked(true);
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
+                binding.toolbar.setTitle("Transactions");
                 return true;
             }
         });
@@ -210,6 +220,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public boolean onMenuItemClick(@NonNull MenuItem item) {
                 //replaceFragment(new ProfileFragment());
                 Toast.makeText(MainActivity.this, "Logout clicked", Toast.LENGTH_SHORT).show();
+                replaceFragment(new HomeFragment());
                 LogOut.setChecked(true);
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
