@@ -20,5 +20,9 @@ public class LoginScreen extends AppCompatActivity {
             Intent intent= new Intent(LoginScreen.this,SignUpScreen.class);
             startActivity(intent);
         });
+        binding.forgetPassword.setOnClickListener(c->{
+            Intent intent= new Intent(LoginScreen.this,MakeSlection.class);
+            startActivity(intent);
+        });
     }
 }
