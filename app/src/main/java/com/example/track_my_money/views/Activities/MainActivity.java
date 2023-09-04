@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     // main activity m fragment apply krne k liye is cod ko home fragment m leke chale gye
 
     public MainViewModel viewModel;
+    // to apply mvvm
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
