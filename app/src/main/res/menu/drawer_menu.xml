@@ -1,55 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
+
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/transaction"
+            android:icon="@drawable/baseline_home_24"
             android:title="Home" />
         <item
-            android:id="@+id/nav_cycle"
-            android:icon="@drawable/transaction"
-            android:title="Cycling" />
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/baseline_assignment_ind_24"
+            android:title="Your Profile" />
         <item
-            android:id="@+id/Nav_home"
-            android:icon="@drawable/transaction"
-            android:title="Bus" />
+            android:id="@+id/nav_history"
+            android:icon="@drawable/baseline_history_24"
+            android:title="Transaction History" />
+        <item
+            android:id="@+id/nav_rate_us"
+            android:icon="@drawable/baseline_rate_review_24"
+            android:title="Rate Us" />
+        <item
+            android:id="@+id/nav_share_us"
+            android:icon="@drawable/baseline_share_24"
+            android:title="Share Us" />
+        <item
+            android:id="@+id/nav_privacy_policy"
+            android:icon="@drawable/baseline_privacy_tip_24"
+            android:title="Privacy Policy" />
+        <item android:id="@+id/nav_log_out"
+            android:title="Log Out"
+            android:icon="@drawable/baseline_logout_24"/>
     </group>
-
-        <item android:title="Profile">
-            <menu>
-                <group android:checkableBehavior="single">
-                <item
-                    android:id="@+id/nav_login"
-                    android:icon="@drawable/account"
-                    android:title="Login" />
-                <item
-                    android:id="@+id/nav_Profile"
-                    android:icon="@drawable/account"
-                    android:title="Profile" />
-                <item
-                    android:id="@+id/nav_logout"
-                    android:icon="@drawable/account"
-                    android:title="Profile" />
-                </group>
-
-            </menu>
-
-        </item>
-
-    <item
-        android:title="Communicatr">
-        <menu>
-            <group
-                android:checkableBehavior="single">
-            <item android:id="@+id/nav_share"
-                android:title="Bus"
-                android:icon="@drawable/transaction"/>
-            <item android:id="@+id/nav_rate"
-            android:title="Rate Us"
-            android:icon="@drawable/transaction"/>
-            </group>
-
-        </menu>
-    </item>
-
 </menu>

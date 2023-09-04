@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:title="Trans."
-        android:id="@+id/transaction"
-        android:icon="@drawable/transaction"/>
+    <item android:title="Home"
+        android:id="@+id/bottom_home"
+        android:icon="@drawable/baseline_home_24"/>
 
     <item android:title="Stats"
-        android:id="@+id/stats"
+        android:id="@+id/bottom_stats"
         android:icon="@drawable/stats"/>
 
     <item android:title="Accounts"
-        android:id="@+id/account"
+        android:id="@+id/bottom_account"
         android:icon="@drawable/account"/>
 
     <item android:title="More"
-        android:id="@+id/more"
+        android:id="@+id/bottom_more"
         android:icon="@drawable/more"/>
 
 </menu>
