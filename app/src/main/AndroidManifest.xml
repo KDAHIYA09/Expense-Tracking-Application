@@ -13,13 +13,16 @@
         android:theme="@style/Theme.Track_My_Money"
         tools:targetApi="31">
         <activity
-            android:name=".views.Activities.SignScreen.LoginScreen"
+            android:name=".views.Activities.SignScreen.SuccessMessage"
             android:exported="false" />
         <activity
-            android:name=".views.Activities.SignScreen.SliderScreenActivity"
+            android:name=".views.Activities.SignScreen.setNewPassword"
             android:exported="false" />
         <activity
-            android:name=".views.Activities.SplashScreenActivity"
+            android:name=".views.Activities.SignScreen.MakeSlection"
+            android:exported="false" />
+        <activity
+            android:name=".views.Activities.SignScreen.ForgetPassword"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,6 +30,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".views.Activities.SignScreen.VerifcationOTP"
+            android:exported="false" />
+        <activity
+            android:name=".views.Activities.SignScreen.SignUp3"
+            android:exported="false" />
+        <activity
+            android:name=".views.Activities.SignScreen.SIgnUpScreen2"
+            android:exported="false" />
+        <activity
+            android:name=".views.Activities.SignScreen.SignUpScreen"
+            android:exported="true" />
+        <activity
+            android:name=".views.Activities.SignScreen.LoginScreen"
+            android:exported="false" />
+        <activity
+            android:name=".views.Activities.SignScreen.SliderScreenActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.Activities.SplashScreenActivity"
+            android:exported="true" />
         <activity
             android:name=".views.Activities.MainActivity"
             android:exported="true">

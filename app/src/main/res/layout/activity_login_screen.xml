@@ -72,7 +72,7 @@
                 android:background="@color/white"
                 android:hint="Password"
                 android:textColorHint="@color/active"
-                app:boxStrokeColor="@color/black"
+                app:boxStrokeColor="@color/active"
                 app:boxStrokeWidthFocused="2dp"
                 app:endIconMode="password_toggle"
                 app:endIconTint="@color/active"
@@ -192,6 +192,7 @@
 
 
             <Button
+                android:id="@+id/create_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/letTheUserLogIn"
