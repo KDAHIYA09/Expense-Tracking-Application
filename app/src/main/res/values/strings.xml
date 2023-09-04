@@ -17,5 +17,6 @@
     <string name="desc_two">Achieve financial goals faster with AI-driven analysis, personalized budget suggestions, and actionable insights.</string>
     <string name="desc_three">Capture and attach receipts to expenses, keeping your financial records organized and readily accessible.</string>
     <string name="desc_fourth">Easily manage shared finances, whether with roommates or colleagues, while syncing accounts across devices for a clear overview.</string>
+    <string name="userName">UserName</string>
 
 </resources>

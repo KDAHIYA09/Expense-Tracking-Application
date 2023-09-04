@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="30dp"
+    tools:context=".views.Activities.SignScreen.SuccessMessage">
+
+    <TextView
+        android:id="@+id/success_message_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-50dp"
+        android:gravity="center"
+        android:text="Password Updated"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/active"
+        android:textSize="30sp" />
+
+
+    <ImageView
+        android:id="@+id/success_message_icon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="20dp"
+        android:src="@drawable/updatepng" />
+
+
+    <TextView
+        android:id="@+id/success_message_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:gravity="center"
+        android:text="Password Updated Success Message"
+        android:textAlignment="center"
+        android:textColor="@color/active"
+        android:textSize="16sp" />
+
+
+    <Button
+        android:id="@+id/success_message_btn"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_sig_bg"
+        android:onClick="backToLogin"
+        android:text="Login"
+        android:textColor="@color/white" />
+
+
+</LinearLayout>
