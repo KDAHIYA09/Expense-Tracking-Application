@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     public MainViewModel viewModel;
     // to apply mvvm
+    // ttttttt
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
